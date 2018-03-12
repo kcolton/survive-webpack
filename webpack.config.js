@@ -1,30 +1,39 @@
+
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const parts = require('./webpack.parts.js');
 
-module.exports = {
-  // will still get entry and output defaults
-  devServer: {
-    // Output only errors
-    stats: "errors-only",
-
-    // Show error overlays
-    // overlay: true is equivalent
-    overlay: {
-      errors: true,
-      warnings: true,
-    },
-
-    // Parse host and port from env to allow customization.
-    // If you use Docker, Vagrant or Cloud9, set
-    // host: options.host || "0.0.0.0";
-    // 0.0.0.0 is available to all network devices
-    // unlike default `localhost`.
-    host: process.env.HOST, // Defaults to `localhost`
-    port: process.env.PORT, // Defaults to 8080
+const commonConfig = merge([
+  {
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: 'SurviveJS Webpack',
+      }),
+    ],
   },
+  parts.loadCSS()
+]);
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'SurviveJS Webpack',
-    }),
-  ]
+const productionConfig = merge([]);
+
+const developmentConfig = merge([
+  parts.devServer({
+    // Customize host/port here if needed
+    host: process.env.HOST,
+    port: process.env.PORT,
+  }),
+]);
+
+
+// Receives "--env" param parsed by yargs package
+// expecting "production" or "development"
+module.exports = function(env) {
+  console.log('configuring webpack for --env:', env);
+
+  if (env === "production") {
+    // merge common + production + { mode: "production" }
+    return merge(commonConfig, productionConfig, { mode: "production" });
+  }
+
+  return merge(commonConfig, developmentConfig, { mode: "development" });
 };
