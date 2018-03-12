@@ -22,6 +22,12 @@ exports.loadCSS = function({ include, exclude } = {}) {
           exclude,
           use: ["style-loader", "css-loader"],
         },
+        {
+          test: /\.scss$/,
+          include,
+          exclude,
+          use: ["style-loader", "css-loader", "sass-loader"],
+        },
       ],
     }
   }
