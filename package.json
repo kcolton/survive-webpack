@@ -4,12 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --mode development\"",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production"
   },
   "dependencies": {
     "html-webpack-plugin": "^3.0.6",
+    "nodemon": "^1.17.1",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.11",
     "webpack-dev-server": "^3.1.1"
