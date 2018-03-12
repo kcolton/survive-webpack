@@ -4,11 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "webpack-version": "webpack --version"
+    "start": "webpack-dev-server --mode development",
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production"
   },
   "dependencies": {
     "html-webpack-plugin": "^3.0.6",
     "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.11"
+    "webpack-cli": "^2.0.11",
+    "webpack-dev-server": "^3.1.1"
   }
 }
