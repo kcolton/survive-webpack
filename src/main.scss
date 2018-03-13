@@ -3,3 +3,21 @@ $background: lightcyan;
 body {
   background: $background;
 }
+
+// Testing autoprefixer
+
+::placeholder {
+  color: gray;
+}
+
+.flex-thing {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-item {
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-self: flex-end;
+}

@@ -64,7 +64,7 @@ exports.extractCSS = function({ include, exclude } = {}) {
           exclude,
 
           use: plugin.extract({
-            use: 'css-loader',
+            use: ['css-loader', 'postcss-loader'],
             fallback: 'style-loader',
           }),
         },
@@ -91,7 +91,7 @@ exports.extractSASS = function({ include, exclude } = {}) {
           exclude,
 
           use: plugin.extract({
-            use: ['css-loader', 'sass-loader'],
+            use: ['css-loader', 'postcss-loader', 'sass-loader'],
             fallback: 'style-loader',
           }),
         },
