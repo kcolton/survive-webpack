@@ -10,7 +10,8 @@ const commonConfig = merge([
         title: 'SurviveJS Webpack',
       }),
     ],
-  }
+  },
+  parts.loadImagesWithUrlLoader()
 ]);
 
 const productionConfig = merge([

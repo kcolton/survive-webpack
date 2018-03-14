@@ -1,7 +1,10 @@
 $background: lightcyan;
 
 body {
-  background: $background;
+  background-color: $background;
+  background-image: url('./img/500.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 // Testing autoprefixer

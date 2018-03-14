@@ -100,3 +100,21 @@ exports.extractSASS = function({ include, exclude } = {}) {
     plugins: [plugin],
   };
 };
+
+exports.loadImagesWithUrlLoader = function({include, exclude, options} = {}) {
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.(gif|jpe?g|png|svg)$/i,
+          include,
+          exclude,
+          use: {
+            loader: 'url-loader',
+            options
+          }
+        }
+      ]
+    }
+  };
+};
