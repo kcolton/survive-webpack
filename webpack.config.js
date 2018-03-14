@@ -10,7 +10,10 @@ const commonConfig = merge([
         title: 'SurviveJS Webpack',
       }),
     ],
-  }
+  },
+  parts.loadJS({
+    exclude: /node_modules/,
+  })
 ]);
 
 const productionConfig = merge([

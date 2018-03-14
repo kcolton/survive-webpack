@@ -122,4 +122,19 @@ exports.loadImagesWithUrlAndFileLoader = function({include, exclude, inlineMaxSi
   };
 };
 
+exports.loadJS = function({include, exclude} = {}) {
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          include,
+          exclude,
+          use: 'babel-loader'
+        },
+      ],
+    },
+  }
+};
+
 
