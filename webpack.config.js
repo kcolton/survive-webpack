@@ -10,13 +10,16 @@ const commonConfig = merge([
         title: 'SurviveJS Webpack',
       }),
     ],
-  },
-  parts.loadImagesWithUrlLoader()
+  }
 ]);
 
 const productionConfig = merge([
   parts.extractCSS(),
-  parts.extractSASS()
+  parts.extractSASS(),
+  parts.loadImagesWithUrlAndFileLoader({
+    inlineMaxSizeLimit: 15000,
+    name: '[name].[ext]'
+  })
 ]);
 
 const developmentConfig = merge([
@@ -26,7 +29,8 @@ const developmentConfig = merge([
     port: process.env.PORT,
   }),
   parts.loadCSS(),
-  parts.loadSASS()
+  parts.loadSASS(),
+  parts.loadImagesWithUrlAndFileLoader()
 ]);
 
 

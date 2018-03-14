@@ -101,7 +101,7 @@ exports.extractSASS = function({ include, exclude } = {}) {
   };
 };
 
-exports.loadImagesWithUrlLoader = function({include, exclude, options} = {}) {
+exports.loadImagesWithUrlAndFileLoader = function({include, exclude, inlineMaxSizeLimit, name} = {}) {
   return {
     module: {
       rules: [
@@ -111,10 +111,15 @@ exports.loadImagesWithUrlLoader = function({include, exclude, options} = {}) {
           exclude,
           use: {
             loader: 'url-loader',
-            options
+            options: {
+              limit: inlineMaxSizeLimit,
+              name
+            }
           }
         }
       ]
     }
   };
 };
+
+
